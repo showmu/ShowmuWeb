@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "ShowmuWeb安装";
+}
+<h2>@ViewData["Title"].</h2>
+
+<form asp-controller="InstallController" asp-action="Install" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+    <h4>Create a new account.</h4>
+   
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">初始化</button>
+        </div>
+    </div>
+</form>
+@Html.ActionLink("初始化", "Install")
+
+<form asp-controller="InstallController" asp-action="Install"method="get" class="form-horizontal">
+    <h4>Create a new account.</h4>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">初始化</button>
+        </div>
+    </div>
+</form>
+<address>
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>

@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page - 秀店 ShowmuShop</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/lib/bootstrap-wizard/bootstrap-wizard.css" />
+
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">ShowmuWeb</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/Home/About">关于</a></li>
+                    <li><a href="/Home/Contact">联系方式</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+
+                        <a id="open-wizard" class="btn about ">
+                            设置向导
+                        </a>
+
+                    </li>
+                    <li>
+                        <a title="账户信息" href="/Manage"> showmu@163.com 的账信息</a>
+                    </li>
+                    <li>
+                      
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container body-content">
+        <script>
+            $.validator.setDefaults({
+                submitHandler: function () {
+                    alert("提交事件!");
+                }
+            });
+            $().ready(function () {
+                $("#commentForm").validate();
+            });
+        </script>
+        <style>
+            .error {
+                color: red;
+            }
+        </style>
+        <form class="cmxform" id="commentForm" method="get" action="">
+            <fieldset>
+                <legend>输入您的名字，邮箱，URL，备注。</legend>
+                <p>
+                    <label for="cname">Name (必需, 最小两个字母)</label>
+                    <input id="cname" name="name" minlength="2" type="text" required>
+                </p>
+                <p>
+                    <label for="cemail">E-Mail (必需)</label>
+                    <input id="cemail" type="email" name="email" required>
+                </p>
+                <p>
+                    <label for="curl">URL (可选)</label>
+                    <input id="curl" type="url" name="url">
+                </p>
+                <p>
+                    <label for="ccomment">备注 (必需)</label>
+                    <textarea id="ccomment" name="comment" required></textarea>
+                </p>
+                <p>
+                    <input class="submit" type="submit" value="Submit">
+                </p>
+            </fieldset>
+        </form>
+
+
+
+    </div>
+
+    <footer>
+        <p>&copy; 2016 - 北京新时代鞋业有限公司</p>
+    </footer>
+
+
+
+
+    <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+
+    <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+  <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>@ViewData["Test"]</p>
+<button id="open123">测试</button>
+<script>
+    $(document).ready(function () {
+        $('#open123').click(function (e) {
+            $.post("/Home/About", { UserName: "Jerry", Password: "123" }, function (data) {
+                alert(data.userName + "--" + data.password);
+            });
+        });});
+</script>
+

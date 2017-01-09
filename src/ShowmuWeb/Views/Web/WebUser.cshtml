@@ -1,0 +1,109 @@
+﻿@using WebModels.Models
+@using ShowmuWebBLL.Web
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@using WebModels.Data
+@using ShowmuWebBLL
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@inject ShowmuWebRoleManager<IdentityRole> roleManager
+@inject ShowmuWebUserManager<ApplicationUser> userManager
+ @model IEnumerable<ApplicationUser>
+
+    <div class="nav-tabs-custom tabbable" style="min-height: 748px;">
+
+        <ul class="nav nav-tabs" id="mytabs">
+            <li class="active"><a aria-expanded="true" href="#activity" data-toggle="tab">工作台</a></li>
+
+        </ul>
+        <div class="tab-content" id="mytabs-content">
+            <div class="tab-pane active" id="activity">
+                <!-- 工作台 -->
+
+                <section class="content-header">
+                    <h1>
+                        工作台
+                        <small>Version 2.0</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="/"><i class="fa fa-dashboard"></i> 主页</a></li>
+                        <li class="active">工作台</li>
+                    </ol>
+                </section>
+
+                <section class="content">
+                    <!-- Info boxes -->
+                    <div class="row">
+
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    用户名
+                                </th>
+                                <th>
+                                    EMail
+                                </th>
+                                <th>
+                                    组
+                                </th>
+                                <th>
+                                    电话号
+                                </th>
+                                <th>
+                                    最后登录时间
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+
+                                        @foreach (var a in  ( await userManager.GetRolesAsync(item)))
+                                        {
+                                            @a //存在多用户组的情况
+                                        }
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastDate)
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            }
+                        </table>
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>44</h3>
+                                    <p>User Registrations</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+
+                    </div><!-- /.row -->
+                </section>
+
+            </div><!-- /.工作台 -->
+
+        </div><!-- /.tab-content -->
+    </div>
+
+

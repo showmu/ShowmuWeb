@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+
+
+<form class="form-horizontal" id="newComForm" method="post">
+    <div class="form-group">
+        <label for="ComName" class="col-sm-2 control-label">公司名称</label>
+        <div class="col-sm-10">
+            <input class="form-control text-box single-line" placeholder="公司名称" id="ComName" name="ComName" value="" type="text" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ComTel" class="col-sm-2 control-label">公司电话</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="ComTel" name="ComTel" placeholder="公司电话" type="text" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ComAddres" class="col-sm-2 control-label">公司地址</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="ComAddres" name="ComAddres" placeholder="公司地址" type="text" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Supervisor" class="col-sm-2 control-label">负责人</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="Supervisor" name="Supervisor" placeholder="负责人" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Supervisor_PID" class="col-sm-2 control-label">负责人身份证号</label>
+        <div class="col-sm-10">
+            <input class="form-control text-box single-line" id="Supervisor_PID" name="Supervisor_PID" placeholder="负责人身份证号" value="" type="text" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" id="newComBt" class="btn btn-danger">创建</button>
+        </div>
+    </div>
+</form>
+<script src="~/js/View/NewCom.js" asp-append-version="true"></script>
+
+
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>

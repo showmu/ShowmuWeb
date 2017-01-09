@@ -1,0 +1,348 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebModels.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewBag.Title = "AdminaAside";
+    Layout = null;
+}
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>@User.Identity.Name </p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="header">功能导航</li>
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>我的连锁</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="index.html"><i class="fa fa-circle-o"></i> 基本信息 </a></li>
+                    <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> 扩展信息</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-files-o"></i>
+                    <span>店面管理</span>
+                    <span class="pull-right-container">
+                        <span class="label label-primary pull-right">4</span>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> 店面列表</a></li>
+                    <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> 员工管理</a></li>
+                    <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> 商品库存</a></li>
+                    <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> 供应管理</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="pages/widgets.html">
+                    <i class="fa fa-th"></i> <span>Widgets</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-green">new</small>
+                    </span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>报表中心</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> 今日营业</a></li>
+                    <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> 库存报表</a></li>
+                    <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> 今日补单子</a></li>
+                    <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> 库存报表</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-laptop"></i>
+                    <span>系统设置</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> 供货商</a></li>
+                    <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> 尺码型号</a></li>              
+                    <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> 员工权限</a></li>
+                    <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
+                    <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-edit"></i> <span>员工管理</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> 员工列表</a></li>
+                    <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> 员工工资</a></li>
+                    <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-table"></i> <span>VIP会员管理</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> 会员列表</a></li>
+                    <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> 会员促销</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="pages/calendar.html">
+                    <i class="fa fa-calendar"></i> <span>Calendar</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-red">3</small>
+                        <small class="label pull-right bg-blue">17</small>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="pages/mailbox/mailbox.html">
+                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-yellow">12</small>
+                        <small class="label pull-right bg-green">16</small>
+                        <small class="label pull-right bg-red">5</small>
+                    </span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i> <span>使用说明</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> 全部功能</a></li>
+                    <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> 商品</a></li>
+                    <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> 收银</a></li>
+                    <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> 员工</a></li>
+                    <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> 店面</a></li>
+                    <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 供货商</a></li>
+                    <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 系统</a></li>
+                    <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> 常见问题</a></li>
+                    <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> 在线客服</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-share"></i> <span>Multilevel</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-circle-o"></i> Level One
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i> Level Two
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                </ul>
+            </li>
+            <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+            <li class="header">LABELS</li>
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+<section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img src="/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p>@User.Identity.Name</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+    </div>
+    <!-- search form -->
+    <div class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="查询产品，请输入货号……">
+            <span class="input-group-btn">
+                <button id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </div>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+      
+        <!-- 我的店面 -->
+        <li class="header">我的店面</li>
+        <!-- 店面 -->
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-pie-chart"></i>
+                <span>日常管理</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#" link="/ShopGIn/GInListPage?q=&page=1" type="html"><i class="glyphicon glyphicon-log-in"></i> 商品入库</a></li>
+                <li><a href="#" link="pages/charts/flot.html"><i class="glyphicon glyphicon-menu-hamburger"></i> 商品库存</a></li>
+                <li><a href="#" link="pages/charts/flot.html"><i class="fa fa-circle-o"></i> 商品盘点</a></li>
+                <li><a href="#" link="pages/charts/flot.html"><i class="fa  fa-rmb"></i> 收银台</a></li>
+            </ul>
+        </li>
+        <!-- 店面设置 -->
+        <li class="active treeview">
+            <a href="#">
+                <i class="fa fa-gear"></i>
+                <span>店面设置</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#" link="/ShopSet/Index?q=&page=1" type="html"><i class="fa fa-circle-o"></i> 店铺列表</a></li>
+                <li><a href="#" link="/Shoper/Index?q=&page=1" type="html"><i class="fa fa-users"></i> 店铺员工</a></li>
+                <li><a href="#" link="/ShopSet/Index?q=&page=1" type="html"><i class="fa fa-circle-o"></i> 库存位置</a></li>
+                <li><a href="#" link="pages/charts/flot.html"><i class="fa fa-circle-o"></i> 促销设置</a></li>
+                <li><a href="#" link="pages/charts/flot.html"><i class="fa fa-circle-o"></i> 供货商设置</a></li>
+            </ul>
+        </li>
+
+        <li class="header">我的连锁</li>
+        <!-- 店面 -->
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-pie-chart"></i>
+                <span>连锁管理</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#" link="/ShopGIn?q=&page=1" type="html"><i class="fa fa-circle-o"></i> 连锁店管理</a></li>
+                <li><a href="#" link="pages/charts/flot.html"><i class="fa fa-circle-o"></i> 商品库存</a></li>
+                <li><a href="#" link="pages/charts/flot.html"><i class="fa fa-circle-o"></i> 员工管理</a></li>
+            </ul>
+        </li>
+        <!-- 店面设置 -->
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-pie-chart"></i>
+                <span>连锁报表</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#" link="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> 库存位置</a></li>
+                <li><a href="#" link="pages/charts/flot.html"><i class="fa fa-circle-o"></i> 促销设置</a></li>
+                <li><a href="#" link="pages/charts/flot.html"><i class="fa fa-circle-o"></i> 供货商设置</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" link="/Admin/AdminProfile?q=" type="html">
+                <i class="glyphicon glyphicon-user"></i> <span>我的信息</span>
+                <small class="label pull-right bg-red">3</small>
+            </a>
+        </li>
+
+        <li class="header">功能导航</li>
+        <!-- 京翔新品 -->
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-dashboard"></i> <span>京翔新品</span> <small class="label pull-right bg-green">new 4</small>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#" link="index2.html"><i class="fa fa-circle-o"></i> 最新到货</a></li>
+                <li><a href="#" link="index2.html"><i class="fa fa-circle-o"></i> 经典货品</a></li>
+                <li><a href="#" link="index2.html"><i class="fa fa-circle-o"></i> 上过的货</a></li>
+                <li><a href="#" link="/Admin/AdminContent"><i class="fa fa-circle-o"></i> 特价精品</a></li>
+            </ul>
+        </li>
+        <!-- 我在京翔 -->
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-files-o"></i>
+                <span>我的单子</span>
+                <span class="label label-primary pull-right">4</span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#" link="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>最近进货单</a></li>
+                <li><a href="#" link="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> 订单查询</a></li>
+
+            </ul>
+        </li>
+        <!-- 我要订货 -->
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-pie-chart"></i>
+                <span>在线下单</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#" link="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> 新建订货单</a></li>
+                <li><a href="#" link="pages/charts/flot.html"><i class="fa fa-circle-o"></i> 订单状态</a></li>
+            </ul>
+        </li>
+
+
+        @*<li class="header">LABELS</li>
+            <li><a href="#" link="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+            <li><a href="#" link="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+            <li><a href="#" link="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>*@
+    </ul>
+</section>
+
+

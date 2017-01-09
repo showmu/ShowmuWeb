@@ -1,0 +1,139 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebModels.Models
+@using ShowmuWebBLL;
+
+
+
+@inject ShowmuWebSignInManager<ApplicationUser> SignInManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+   
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+
+                @if (SignInManager.IsComOK(User.Identity.Name))
+                {
+                    <a class="btn about" asp-controller="AdminManage" asp-action="Index" title="管理中心">进入管理</a>
+                }
+                else
+                {
+                    <a id="open-wizard" class="btn about ">
+                        设置向导
+                    </a>
+
+                            <div class="wizard" id="satellite-wizard" data-title="新建 公司或连锁">
+                                <form class="form-horizontal" id="newComForm" method="post">
+                                    <!-- Step 1 Name & FQDN -->
+                                    <div class="wizard-card" data-cardname="name">
+                                        <h3>基本信息</h3>
+
+                                        <div class="wizard-input-section">
+                                            <div class="form-group">
+                                                <label for="ComName" class="col-sm-4 control-label">公司名称</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control text-box single-line" placeholder="公司名称" id="ComName" name="ComName" value="" type="text" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="wizard-input-section">
+                                           
+                                            <div class="form-group">
+                                                <label for="DetailAddress" class="col-sm-4 control-label">公司地址</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control" id="DetailAddress" name="DetailAddress" placeholder="公司地址" type="text" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="wizard-card" data-cardname="group">
+                                        <h3>联系信息</h3>
+
+                                        <div class="wizard-input-section">
+                                            <div class="form-group">
+                                                <label for="Supervisor" class="col-sm-4 control-label">负责人</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control" id="Supervisor" name="Supervisor" placeholder="负责人" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="wizard-input-section">
+                                            <div class="form-group">
+                                                <label for="ComTel" class="col-sm-4 control-label">公司电话</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control" id="ComTel" name="ComTel" placeholder="公司电话" type="text" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wizard-input-section">
+                                            <div class="form-group">
+                                                <label for="Supervisor_PID" class="col-sm-4 control-label">负责人身份证号</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control text-box single-line" id="Supervisor_PID" name="Supervisor_PID" placeholder="负责人身份证号" value="" type="text" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="wizard-card">
+                                        <h3>确认信息</h3>
+                                        <div class="wizard-input-section">
+                                            
+                                        </div>
+
+
+                                        <div class="wizard-error">
+                                            <div class="alert alert-error">
+                                                <strong>There was a problem</strong> with your submission.
+                                                Please correct the errors and re-submit.
+                                            </div>
+                                        </div>
+
+                                        <div class="wizard-failure">
+                                            <div class="alert alert-error">
+                                                <strong>There was a problem</strong> submitting the form.
+                                                Please try again in a minute.
+                                            </div>
+                                        </div>
+
+                                        <div class="wizard-success">
+                                            <div class="alert alert-success">
+                                                <span class="create-server-name"></span>新的申请已提交成功！ <strong>我们需要审核！</strong>
+                                            </div>
+                                            <span style="padding:0 10px">or</span>
+                                            <a class="btn btn-success im-done">返回</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                   
+                }
+
+            </li>
+            <li>
+                <a asp-controller="Manage" asp-action="Index" title="账户信息"> @User.Identity.Name 的账信息</a>
+            </li>
+            <li>
+                <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+                    <button type="submit" class="btn btn-link navbar-btn navbar-link">注销</button>
+                </form>
+</li>
+        </ul>
+   
+
+
+
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-controller="Account" asp-action="Register">注册</a></li>
+        <li><a asp-controller="Account" asp-action="Login">登录</a></li>
+    </ul>
+}
